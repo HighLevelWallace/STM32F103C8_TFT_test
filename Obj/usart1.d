@@ -1,0 +1,13 @@
+.\obj\usart1.o: user\usart1.c
+.\obj\usart1.o: user\usart1.h
+.\obj\usart1.o: user\stm32f10x.h
+.\obj\usart1.o: user\core_cm3.h
+.\obj\usart1.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\usart1.o: user\system_stm32f10x.h
+.\obj\usart1.o: user\stm32f10x_conf.h
+.\obj\usart1.o: .\FWlib\inc\stm32f10x_gpio.h
+.\obj\usart1.o: .\user\stm32f10x.h
+.\obj\usart1.o: .\FWlib\inc\stm32f10x_rcc.h
+.\obj\usart1.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\usart1.o: .\FWlib\inc\stm32f10x_usart.h
+.\obj\usart1.o: D:\keil\ARM\ARMCC\Bin\..\include\stdarg.h

@@ -5,7 +5,12 @@
 #include "delay.h"
 #include "Picture.h"
 #include "QDTFT_demo.h"
+#include "stdio.h"
+#include "misc.h"
 unsigned char Num[10]={0,1,2,3,4,5,6,7,8,9};
+
+extern int tick_count;
+
 void Redraw_Mainmenu(void)
 {
 
@@ -106,4 +111,15 @@ void QDTFT_Test_Demo(void)
 	showimage(gImage_qq);//Í¼Æ¬ÏÔÊ¾Ê¾Àý
 	delay_ms(1200);
 	LCD_LED_CLR;//IO¿ØÖÆ±³¹âÃð	
+}
+
+void count_display(void)
+{
+	char cnt[20], in[20];
+	//Lcd_Clear(WHITE);
+	sprintf(cnt, "Encoder: %03d", tick_count);
+	sprintf(in, "Input: %01d", GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0));
+	//GPIO_ResetBits(GPIOA,  GPIO_Pin_0);
+	Gui_DrawFont_GBK16(0, 0, BLUE, GRAY0, (u8*)cnt);
+	Gui_DrawFont_GBK16(0, 16, BLUE, GRAY0, (u8*)in);
 }

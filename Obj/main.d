@@ -11,3 +11,10 @@
 .\obj\main.o: user\QDTFT_demo.h
 .\obj\main.o: user\Lcd_Driver.h
 .\obj\main.o: user\GUI.h
+.\obj\main.o: .\FWlib\inc\misc.h
+.\obj\main.o: .\FWlib\inc\stm32f10x_exti.h
+.\obj\main.o: user\stm32f10x_it.h
+.\obj\main.o: user\led.h
+.\obj\main.o: user\usart1.h
+.\obj\main.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\main.o: .\FWlib\inc\stm32f10x_usart.h

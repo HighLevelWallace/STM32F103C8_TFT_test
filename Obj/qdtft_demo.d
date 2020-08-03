@@ -12,3 +12,5 @@
 .\obj\qdtft_demo.o: user\delay.h
 .\obj\qdtft_demo.o: user\Picture.h
 .\obj\qdtft_demo.o: user\QDTFT_demo.h
+.\obj\qdtft_demo.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\qdtft_demo.o: .\FWlib\inc\misc.h

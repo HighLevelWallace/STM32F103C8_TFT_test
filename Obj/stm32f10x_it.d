@@ -8,3 +8,4 @@
 .\obj\stm32f10x_it.o: .\FWlib\inc\stm32f10x_gpio.h
 .\obj\stm32f10x_it.o: .\user\stm32f10x.h
 .\obj\stm32f10x_it.o: .\FWlib\inc\stm32f10x_rcc.h
+.\obj\stm32f10x_it.o: .\FWlib\inc\stm32f10x_exti.h

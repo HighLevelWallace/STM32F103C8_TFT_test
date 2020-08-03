@@ -22,7 +22,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+#include "stm32f10x_exti.h"
+#include "led.h"
+#include "usart1.h"
 
+extern int tick_count;
 /** @addtogroup StdPeriph_Examples
   * @{
   */
@@ -49,6 +53,10 @@
   */
 void NMI_Handler(void)
 {
+	USART_SendData(USART1, 'N');
+		USART_SendData(USART1, '\r');
+		USART_SendData(USART1, '\n');
+		USART_SendData(USART1, '\0');
 }
 
 void USART1_IRQHandler(void){
@@ -65,7 +73,10 @@ void HardFault_Handler(void)
 {
   /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
-  {
+  {USART_SendData(USART1, 'H');
+		USART_SendData(USART1, '\r');
+		USART_SendData(USART1, '\n');
+		USART_SendData(USART1, '\0');
   }
 }
 
@@ -91,7 +102,10 @@ void BusFault_Handler(void)
 {
   /* Go to infinite loop when Bus Fault exception occurs */
   while (1)
-  {
+  {USART_SendData(USART1, 'B');
+		USART_SendData(USART1, '\r');
+		USART_SendData(USART1, '\n');
+		USART_SendData(USART1, '\0');
   }
 }
 
@@ -105,6 +119,10 @@ void UsageFault_Handler(void)
   /* Go to infinite loop when Usage Fault exception occurs */
   while (1)
   {
+	  USART_SendData(USART1, 'U');
+		USART_SendData(USART1, '\r');
+		USART_SendData(USART1, '\n');
+		USART_SendData(USART1, '\0');
   }
 }
 
@@ -150,6 +168,43 @@ void SysTick_Handler(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f10x_xx.s).                                            */
 /******************************************************************************/
+
+/*不精确的延时 */
+ void Delay(__IO u32 nCount)
+{
+  for(; nCount != 0; nCount--);
+} 
+
+void EXTI1_IRQHandler(void)
+{	
+	int8_t b = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_10);
+	//if(EXTI_GetITStatus(EXTI_Line0) != RESET) 
+	{
+          
+//		if(GPIO_ReadInputDataBit(GPIOB,  GPIO_Pin_0) )
+//		{
+//			GPIO_ResetBits(GPIOB,  GPIO_Pin_1);
+//		}
+//		else
+//		{
+//			GPIO_SetBits(GPIOB,  GPIO_Pin_0);
+//		
+//		}
+		
+		EXTI_ClearITPendingBit(EXTI_Line1);    
+		/*延时消抖*/
+		//while(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_1));	
+		//Delay(50000);
+//		USART_SendData(USART1, 'T');
+//		USART_SendData(USART1, '\r');
+//		USART_SendData(USART1, '\n');
+//		USART_SendData(USART1, '\0');		
+		tick_count += b * 2 - 1;
+		 
+	}  
+
+	
+}
 
 /**
   * @brief  This function handles PPP interrupt request.
